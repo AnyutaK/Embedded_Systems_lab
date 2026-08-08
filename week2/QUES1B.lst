@@ -1,0 +1,174 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Write an ARM assembly language program to transfer bloc
+                       k of ten 32 bit numbers from one memory to another a.
+    2 00000000         ;When the source and destination blocks are non-overlapp
+                       ing b.When the source and destination blocks are overlap
+                       ping
+    3 00000000         ;b.
+    4 00000000                 AREA             RESET, DATA, READONLY
+    5 00000000                 EXPORT           __Vectors
+    6 00000000         __Vectors
+    7 00000000 40001000        DCD              0x40001000
+    8 00000004 00000000        DCD              Reset_Handler
+    9 00000008                 ALIGN
+   10 00000008                 AREA             mycode, CODE, READONLY
+   11 00000000                 ENTRY
+   12 00000000                 EXPORT           Reset_Handler
+   13 00000000         Reset_Handler
+   14 00000000 4807            LDR              R0, =SRC
+   15 00000002 4907            LDR              R1, =SRC
+   16 00000004 F100 0024       ADD              R0, R0, #(N-1)*4 ; R0 points to
+                                                             the last element o
+                                                            f SRC
+   17 00000008 F101 012C       ADD              R1, R1, #(N-1+S)*4 ; 
+   18 0000000C F04F 020A       MOV              R2, #10
+   19 00000010         LOOP
+   20 00000010 F850 3904       LDR              R3, [R0],#-4
+   21 00000014 F841 3904       STR              R3, [R1],#-4
+   22 00000018 1E52            SUBS             R2, R2, #1
+   23 0000001A D1F9            BNE              LOOP
+   24 0000001C         
+   25 0000001C         STOP
+   26 0000001C E7FE            B                STOP
+   27 0000001E 0000000A 
+                       N       EQU              10
+   28 0000001E 00000002 
+                       S       EQU              2
+   29 0000001E 00 00 00000000 
+              00000000         AREA             MYDATA,DATA,READWRITE
+   30 00000000         SRC
+   31 00000000 000000A1 
+              000000A2 
+              000000A3 
+              000000A4 
+              000000A5 
+              000000A6 
+              000000A7 
+              000000A8 
+              000000A9 
+              00000A10         DCD              0X00A1,0X00A2,0X00A3,0X00A4,0X0
+0A5,0X00A6,0X00A7,0X00A8,0X00A9,0X0A10
+   32 00000028 00 00 00 
+              00 00 00 
+              00 00            SPACE            8
+   33 00000030                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=QUES1B.d
+ -oQUES1B.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\In
+c\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=QUES1B.lst QUES1B.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 4 in file QUES1B.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 6 in file QUES1B.asm
+   Uses
+      At line 5 in file QUES1B.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 00000010
+
+Symbol: LOOP
+   Definitions
+      At line 19 in file QUES1B.asm
+   Uses
+      At line 23 in file QUES1B.asm
+Comment: LOOP used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 13 in file QUES1B.asm
+   Uses
+      At line 8 in file QUES1B.asm
+      At line 12 in file QUES1B.asm
+
+STOP 0000001C
+
+Symbol: STOP
+   Definitions
+      At line 25 in file QUES1B.asm
+   Uses
+      At line 26 in file QUES1B.asm
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 10 in file QUES1B.asm
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MYDATA 00000000
+
+Symbol: MYDATA
+   Definitions
+      At line 29 in file QUES1B.asm
+   Uses
+      None
+Comment: MYDATA unused
+SRC 00000000
+
+Symbol: SRC
+   Definitions
+      At line 30 in file QUES1B.asm
+   Uses
+      At line 14 in file QUES1B.asm
+      At line 15 in file QUES1B.asm
+
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+N 0000000A
+
+Symbol: N
+   Definitions
+      At line 27 in file QUES1B.asm
+   Uses
+      At line 16 in file QUES1B.asm
+      At line 17 in file QUES1B.asm
+
+S 00000002
+
+Symbol: S
+   Definitions
+      At line 28 in file QUES1B.asm
+   Uses
+      At line 17 in file QUES1B.asm
+Comment: S used once
+2 symbols
+343 symbols in table

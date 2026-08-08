@@ -1,0 +1,1 @@
+QUES1B.o: QUES1B.asm
