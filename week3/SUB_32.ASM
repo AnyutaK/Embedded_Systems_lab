@@ -1,0 +1,23 @@
+;Write a program to subtract two 32 bit numbers
+	AREA RESET,DATA,READONLY
+	EXPORT __Vectors
+__Vectors
+	DCD 0X10001000
+	DCD Reset_Handler
+	ALIGN
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+	LDR R0,=VAL1
+	LDR R1,[R0]
+	LDR R0,=VAL2
+	LDR R3,[R0]
+	SUBS R4,R3,R1
+	LDR R2,=RESULT
+	STR R4,[R2]
+STOP B STOP
+VAL1 DCD 0X12345678
+VAL2 DCD 0XABCDEF12
+	AREA data,DATA,READWRITE
+RESULT DCD 0

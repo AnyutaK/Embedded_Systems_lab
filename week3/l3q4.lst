@@ -1,0 +1,161 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Write an assembly language program to find LCM of two n
+                       umbers
+    2 00000000                 AREA             RESET,DATA,READONLY
+    3 00000000                 EXPORT           __Vectors
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0X10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             mycode,CODE,READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         Reset_Handler
+   12 00000000 480A            LDR              R0,=NUM1
+   13 00000002 6800            LDR              R0,[R0]
+   14 00000004 490A            LDR              R1,=NUM2
+   15 00000006 6809            LDR              R1,[R1]
+   16 00000008 F04F 0201       MOV              R2, #1
+   17 0000000C         CALCULATE_LOOP
+   18 0000000C FB02 F300       MUL              R3, R2, R0
+   19 00000010 FBB3 F4F1       UDIV             R4, R3, R1
+   20 00000014 FB04 3511       MLS              R5, R4, R1, R3
+   21 00000018 2D00            CMP              R5, #0
+   22 0000001A D002            BEQ              EXIT_LOOP
+   23 0000001C F102 0201       ADD              R2, R2, #1
+   24 00000020 E7F4            B                CALCULATE_LOOP
+   25 00000022         EXIT_LOOP
+   26 00000022 FB02 F300       MUL              R3, R2, R0
+   27 00000026 4C03            LDR              R4, =LCM
+   28 00000028 6023            STR              R3, [R4]
+   29 0000002A         STOP
+   30 0000002A E7FE            B                STOP
+   31 0000002C 00000000 
+              00000000 
+              00000000         AREA             data,DATA,READWRITE
+   32 00000000 00000004 
+                       NUM1    DCD              4
+   33 00000004 00000006 
+                       NUM2    DCD              6
+   34 00000008 00 00 00 
+              00       LCM     SPACE            4
+   35 0000000C                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=l3q4.d -
+ol3q4.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NX
+P\LPC17xx --predefine="__EVAL SETA 1" --list=l3q4.lst l3q4.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 2 in file l3q4.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file l3q4.asm
+   Uses
+      At line 3 in file l3q4.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+CALCULATE_LOOP 0000000C
+
+Symbol: CALCULATE_LOOP
+   Definitions
+      At line 17 in file l3q4.asm
+   Uses
+      At line 24 in file l3q4.asm
+Comment: CALCULATE_LOOP used once
+EXIT_LOOP 00000022
+
+Symbol: EXIT_LOOP
+   Definitions
+      At line 25 in file l3q4.asm
+   Uses
+      At line 22 in file l3q4.asm
+Comment: EXIT_LOOP used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file l3q4.asm
+   Uses
+      At line 6 in file l3q4.asm
+      At line 10 in file l3q4.asm
+
+STOP 0000002A
+
+Symbol: STOP
+   Definitions
+      At line 29 in file l3q4.asm
+   Uses
+      At line 30 in file l3q4.asm
+Comment: STOP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 8 in file l3q4.asm
+   Uses
+      None
+Comment: mycode unused
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LCM 00000008
+
+Symbol: LCM
+   Definitions
+      At line 34 in file l3q4.asm
+   Uses
+      At line 27 in file l3q4.asm
+Comment: LCM used once
+NUM1 00000000
+
+Symbol: NUM1
+   Definitions
+      At line 32 in file l3q4.asm
+   Uses
+      At line 12 in file l3q4.asm
+Comment: NUM1 used once
+NUM2 00000004
+
+Symbol: NUM2
+   Definitions
+      At line 33 in file l3q4.asm
+   Uses
+      At line 14 in file l3q4.asm
+Comment: NUM2 used once
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 31 in file l3q4.asm
+   Uses
+      None
+Comment: data unused
+4 symbols
+344 symbols in table

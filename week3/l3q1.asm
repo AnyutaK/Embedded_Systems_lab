@@ -1,0 +1,26 @@
+;Write a program to add ten 32 bit numbers stored in code segment and store the result in data segment
+	AREA RESET,DATA,READONLY
+	EXPORT __Vectors
+__Vectors
+	DCD 0X10001000
+	DCD Reset_Handler
+	ALIGN
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT Reset_Handler
+Reset_Handler
+	LDR R0,=SRC
+	MOV R2,#10
+	LDR R1,=SUM
+BACK LDR R3,[R0],#4
+	ADDS R4,R3
+	ADC R5,#0
+	SUBS R2,#1
+	BNE BACK
+	STR R4,[R1],#4
+	STR R5,[R1]
+STOP B STOP
+SRC DCD 0X12345678,0XA1B2C3D4,0XE5F61234,0X578A3BE1,0X1CEC8EA3,0X7A2144A,0XC90C5A43,0XF1325468,0X1989,0X672B
+	AREA data,DATA,READWRITE
+SUM DCD 0,0
+	END
