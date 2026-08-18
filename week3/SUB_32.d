@@ -1,1 +1,0 @@
-SUB_32.o: SUB_32.ASM
